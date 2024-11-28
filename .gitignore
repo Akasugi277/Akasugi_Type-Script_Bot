@@ -10,7 +10,7 @@
 /.env.dev
 /.env.development
 /package-lock.json
-
+/Discord.TypeScript.txt
 # Config files
 /firebase.json
 
