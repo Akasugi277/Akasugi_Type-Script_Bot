@@ -1,20 +1,22 @@
-import { Command } from "#base";
-import { createRow } from "@magicyan/discord";
-import { ApplicationCommandType, ButtonBuilder, ButtonStyle } from "discord.js";
+// src/discord/commands/public/ping.ts
+import { Command } from "#base"; // コマンドをインポート
+import { createRow } from "@magicyan/discord"; // ボタン行を作成するための関数をインポート
+import { ApplicationCommandType, ButtonBuilder, ButtonStyle } from "discord.js"; // Discord.jsから必要な型とクラスをインポート
 
+// "ping" コマンドを定義
 new Command({
-	name: "ping",
-	description: "Replies with pong 🏓",
-	type: ApplicationCommandType.ChatInput,
+	name: "ping", // コマンド名
+	description: "Replies with pong 🏓", // コマンドの説明
+	type: ApplicationCommandType.ChatInput, // コマンドタイプ
 	run(interaction){
 		const row = createRow(
-			// ../../responders/buttons/remind.ts
+			// リマインダーボタンを作成
 			new ButtonBuilder({ 
-				customId: `remind/${new Date().toISOString()}`,
-				label: "Ping",
-				style: ButtonStyle.Success
+				customId: `remind/${new Date().toISOString()}`, // リマインダーのカスタムID
+				label: "Ping", // ボタンのラベル
+				style: ButtonStyle.Success // ボタンのスタイル
 			})
 		);
-		interaction.reply({ ephemeral, content: "pong", components: [row] });
+		interaction.reply({ ephemeral, content: "pong", components: [row] }); // "pong"とボタンを返信
 	}
 });

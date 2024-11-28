@@ -1,44 +1,49 @@
-import { Command, Responder, ResponderType } from "#base";
-import { createEmbed, createEmbedAuthor, createRow } from "@magicyan/discord";
-import { ApplicationCommandType, ButtonBuilder, ButtonStyle, InteractionReplyOptions, User } from "discord.js";
+// src/discord/commands/public/counter.ts
+import { Command, Responder, ResponderType } from "#base"; // コマンドとレスポンダーをインポート
+import { createEmbed, createEmbedAuthor, createRow } from "@magicyan/discord"; // 埋め込みメッセージとボタン行を作成するための関数をインポート
+import { ApplicationCommandType, ButtonBuilder, ButtonStyle, InteractionReplyOptions, User } from "discord.js"; // Discord.jsから必要な型とクラスをインポート
 
+// "counter" コマンドを定義
 new Command({
-    name: "counter",
-    description: "Counter command 🔢",
-    type: ApplicationCommandType.ChatInput,
+    name: "counter", // コマンド名
+    description: "Counter command 🔢", // コマンドの説明
+    type: ApplicationCommandType.ChatInput, // コマンドタイプ
     run(interaction) {
-        interaction.reply(counterMenu(interaction.user, 0));
+        // コマンド実行時の処理
+        interaction.reply(counterMenu(interaction.user, 0)); // 初期値0でカウンターメニューを表示
     }
 });
 
+// ボタンレスポンダーを定義
 new Responder({
-    customId: "counter/:current",
-    type: ResponderType.Button, cache: "cached",
+    customId: "counter/:current", // カスタムID
+    type: ResponderType.Button, cache: "cached", // ボタンタイプのレスポンダー
     run(interaction, { current }) {
-        const parsed = Number.parseInt(current);
-        interaction.update(counterMenu(interaction.user, parsed));
+        const parsed = Number.parseInt(current); // 現在の値を数値に変換
+        interaction.update(counterMenu(interaction.user, parsed)); // メニューを更新
     },
 });
 
+// カウンターメニューを作成する関数
 function counterMenu(user: User, current: number) {    
     const embed = createEmbed({
-        author: createEmbedAuthor(user),
-        color: "Random",
-        description: `Current value: ${current}`
+        author: createEmbedAuthor(user), // ユーザー情報を埋め込みに追加
+        color: "Random", // ランダムな色
+        description: `Current value: ${current}` // 現在の値を表示
     });
     const components = [
         createRow(
             new ButtonBuilder({
-                customId: `counter/${current+1}`, 
-                label: "+", style: ButtonStyle.Success
+                customId: `counter/${current+1}`, // "+"ボタンのカスタムID
+                label: "+", style: ButtonStyle.Success // ボタンのラベルとスタイル
             }),
             new ButtonBuilder({
-                customId: `counter/${current-1}`, 
-                label: "-", style: ButtonStyle.Danger
+                customId: `counter/${current-1}`, // "-"ボタンのカスタムID
+                label: "-", style: ButtonStyle.Danger // ボタンのラベルとスタイル
             }),
         )
     ];
     return { 
-        ephemeral, embeds: [embed], components
-    } satisfies InteractionReplyOptions;
+        ephemeral, embeds: [embed], components // 返却するオブジェクト
+    } satisfies InteractionReplyOptions; // InteractionReplyOptions型であることを確認
 }

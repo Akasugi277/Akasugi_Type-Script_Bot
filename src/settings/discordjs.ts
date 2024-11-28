@@ -1,5 +1,6 @@
+// src/settings/discordjs.ts
 declare module "discord.js" {
 	interface Client {
-		// Add your properties
+		// プロパティを追加する場所
 	}
 }
