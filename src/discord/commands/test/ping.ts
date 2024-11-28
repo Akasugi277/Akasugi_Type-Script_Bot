@@ -1,4 +1,4 @@
-// src/discord/commands/public/ping.ts
+// src/discord/commands/test/ping.ts
 import { Command } from "#base"; // コマンドをインポート
 import { createRow } from "@magicyan/discord"; // ボタン行を作成するための関数をインポート
 import { ApplicationCommandType, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js"; // Discord.jsから必要な型とクラスをインポート
@@ -6,7 +6,7 @@ import { ApplicationCommandType, ButtonBuilder, ButtonStyle, EmbedBuilder } from
 // "ping" コマンドを定義
 new Command({
     name: "ping", // コマンド名
-    description: "🏓｜応答として pong を返します。（動作テスト用）", // コマンドの説明
+    description: "🧪｜応答として pong を返します。（動作テスト用）", // コマンドの説明
     type: ApplicationCommandType.ChatInput, // コマンドタイプ
     run(interaction) {
         const row = createRow(

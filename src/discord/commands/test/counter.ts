@@ -1,4 +1,4 @@
-// src/discord/commands/public/counter.ts
+// src/discord/commands/test/counter.ts
 import { Command, Responder, ResponderType } from "#base"; // コマンドとレスポンダーをインポート
 import { createEmbed, createEmbedAuthor, createRow } from "@magicyan/discord"; // 埋め込みメッセージとボタン行を作成するための関数をインポート
 import { ApplicationCommandType, ButtonBuilder, ButtonStyle, InteractionReplyOptions, User } from "discord.js"; // Discord.jsから必要な型とクラスをインポート
@@ -6,7 +6,7 @@ import { ApplicationCommandType, ButtonBuilder, ButtonStyle, InteractionReplyOpt
 // "counter" コマンドを定義
 new Command({
     name: "counter", // コマンド名
-    description: "🔢｜ボタンを押してカウントをします。（動作テスト用）", // コマンドの説明
+    description: "🧪｜ボタンを押してカウントをします。（動作テスト用）", // コマンドの説明
     type: ApplicationCommandType.ChatInput, // コマンドタイプ
     run(interaction) {
         // コマンド実行時の処理
