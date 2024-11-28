@@ -6,7 +6,7 @@ import { ApplicationCommandType, ButtonBuilder, ButtonStyle, InteractionReplyOpt
 // "counter" コマンドを定義
 new Command({
     name: "counter", // コマンド名
-    description: "Counter command 🔢", // コマンドの説明
+    description: "🔢｜ボタンを押してカウントをします。（動作テスト用）", // コマンドの説明
     type: ApplicationCommandType.ChatInput, // コマンドタイプ
     run(interaction) {
         // コマンド実行時の処理
@@ -29,7 +29,7 @@ function counterMenu(user: User, current: number) {
     const embed = createEmbed({
         author: createEmbedAuthor(user), // ユーザー情報を埋め込みに追加
         color: "Random", // ランダムな色
-        description: `Current value: ${current}` // 現在の値を表示
+        description: `ボタンを押してカウント: ${current}` // 現在の値を表示
     });
     const components = [
         createRow(

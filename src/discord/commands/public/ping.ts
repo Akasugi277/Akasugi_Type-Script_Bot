@@ -6,7 +6,7 @@ import { ApplicationCommandType, ButtonBuilder, ButtonStyle } from "discord.js";
 // "ping" コマンドを定義
 new Command({
 	name: "ping", // コマンド名
-	description: "Replies with pong 🏓", // コマンドの説明
+	description: "🏓｜応答として pong を返します。（動作テスト用）", // コマンドの説明
 	type: ApplicationCommandType.ChatInput, // コマンドタイプ
 	run(interaction){
 		const row = createRow(

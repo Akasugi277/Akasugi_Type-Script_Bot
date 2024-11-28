@@ -15,6 +15,6 @@ new Responder({
     parse: params => schema.parse(params), // パラメータをスキーマで解析
     run(interaction, { date }) {
         // ボタンが押されたときの処理
-        interaction.reply({ ephemeral, content: `You run ping command ${time(date, "R")}` }); // リプライを送信
+        interaction.reply({ ephemeral, content: `✅あなたは ${time(date, "R")} にpingを実行しました。` }); // リプライを送信
     },
 });
