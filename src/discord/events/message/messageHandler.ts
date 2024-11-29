@@ -1,6 +1,6 @@
 // src/discord/events/message/messageHandler.ts
 import { Events, EmbedBuilder } from "discord.js"; // EmbedBuilderをインポート
-import { Settings } from '../../../database/schemas/settings';
+import { Settings } from '../../../database/schemas/settings.js';
 
 export const messageHandler = async (message) => {
     // BOTが自分自身のメッセージに反応しないようにする

@@ -1,6 +1,6 @@
 // src/discord/commands/admin/settings.ts
 import { Command } from "#base"; // コマンドをインポート
-import { Settings } from '../../../database/schemas/settings'; // 設定モデルをインポート
+import { Settings } from '../../../database/schemas/settings.js'; // 設定モデルをインポート
 import { ApplicationCommandType } from "discord.js"; // Discord.jsから必要な型をインポート
 
 new Command({
