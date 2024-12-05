@@ -22,7 +22,7 @@ export const messageHandler = async (message) => {
         const embed = new EmbedBuilder()
             .setColor(0x001F3F) // 濃紺の色を設定
             .setTitle("挨拶")
-            .setDescription("こんにちは！BOTに何かお手伝いできることはありますか？");
+            .setDescription("こんにちは！");
 
         await message.channel.send({ embeds: [embed] });
     }
