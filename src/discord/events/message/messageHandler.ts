@@ -1,5 +1,5 @@
 // src/discord/events/message/messageHandler.ts
-import { Events, EmbedBuilder } from "discord.js"; // EmbedBuilderをインポート
+import { EmbedBuilder } from "discord.js"; // EmbedBuilderをインポート
 import { Settings } from '../../../database/schemas/settings.js';
 
 export const messageHandler = async (message) => {
@@ -10,11 +10,25 @@ export const messageHandler = async (message) => {
     const settings = await Settings.findOne({ guildId: message.guild.id });
 
     // サーバー全体の設定がOFFの場合は何もしない
-    if (settings && !settings.globalSettings.featureEnabled) return;
+    if (settings && !settings.globalSettings.featureEnabled) {
+        // 管理者のコマンドかどうかを確認
+        const isAdminCommand = message.member.permissions.has("ADMINISTRATOR");
+
+        // 管理者が実行するコマンドの場合は処理を続行
+        if (!isAdminCommand) {
+            return; // それ以外の場合は何もしない
+        }
+    }
 
     // チャンネルの設定を確認
     const channelSetting = settings?.channelSettings.get(message.channel.id);
-    if (channelSetting === false) return; // チャンネルの設定がOFFの場合は何もしない
+    const categorySetting = settings?.categorySettings.get(message.channel.parentId); // カテゴリの設定を取得
+
+    // チャンネルの設定がOFFの場合は何もしない（サーバー全体がONの場合は処理を続行）
+    if (channelSetting === false) return; // チャンネルの設定がOFF
+
+    // カテゴリの設定がOFFの場合も何もしない（サーバー全体がONの場合は処理を続行）
+    if (categorySetting === false) return; // カテゴリの設定がOFF
 
     // ここにメッセージに対する処理を書く
     // 例：特定のキーワードに反応する場合
@@ -29,3 +43,4 @@ export const messageHandler = async (message) => {
 
     // 例：スパム検知などの処理を追加することも可能
 };
+s

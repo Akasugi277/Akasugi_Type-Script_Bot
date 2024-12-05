@@ -7,6 +7,10 @@ const settingsSchema = new Schema({
         type: Map,
         of: Boolean, // 各チャンネルの設定（ON/OFF）
     },
+    categorySettings: {
+        type: Map,
+        of: Boolean, // 各カテゴリの設定（ON/OFF）
+    },
     globalSettings: {
         featureEnabled: { type: Boolean, default: true }, // サーバー全体の設定
     },
