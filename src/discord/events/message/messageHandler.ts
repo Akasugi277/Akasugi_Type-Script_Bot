@@ -43,4 +43,3 @@ export const messageHandler = async (message) => {
 
     // 例：スパム検知などの処理を追加することも可能
 };
-s

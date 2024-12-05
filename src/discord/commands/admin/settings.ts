@@ -24,7 +24,7 @@ new Command({
             type: 3, // STRING型
             required: true,
             choices: [
-                { name: "全体", value: "global" },
+                { name: "サーバー", value: "global" },
                 { name: "カテゴリ", value: "category" },
                 { name: "チャンネル", value: "channel" },
             ],
