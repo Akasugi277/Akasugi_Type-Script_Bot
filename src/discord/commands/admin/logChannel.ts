@@ -23,7 +23,7 @@ new Command({
         if (!settings) {
             settings = new Settings({ guildId: interaction.guildId });
         }
-
+        
         // ログチャンネルを設定
         settings.logChannelId = channel.id; // 新しく追加するフィールド
         await settings.save();

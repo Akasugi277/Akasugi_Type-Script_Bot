@@ -16,7 +16,7 @@ const client = new Client({
         GatewayIntentBits.GuildMembers,
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildVoiceStates,
-        GatewayIntentBits.GuildChannels,
+        //GatewayIntentBits.GuildChannels,
     ],
 });
 
@@ -49,4 +49,4 @@ client.on('channelDelete', channelDeleteHandler);
 await bootstrapApp({ workdir: import.meta.dirname });
 
 // Discordボットのログイン
-client.login(process.env.TOKEN); // 環境変数からトークンを取得してログインします。
+//client.login(process.env.TOKEN); // 環境変数からトークンを取得してログインします。
