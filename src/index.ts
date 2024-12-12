@@ -7,6 +7,18 @@ import { deleteHandler as messageDeleteHandler } from './discord/events/message/
 import { createHandler as channelCreateHandler } from './discord/events/channel/create.js'; // チャンネル作成イベントハンドラーをインポート
 import { updateHandler as channelUpdateHandler } from './discord/events/channel/update.js'; // チャンネル更新イベントハンドラーをインポート
 import { deleteHandler as channelDeleteHandler } from './discord/events/channel/delete.js'; // チャンネル削除イベントハンドラーをインポート
+import mongoose from "mongoose"; // mongooseと型推論のための関数、モデルをインポート
+import { log } from "#settings"; // 設定からログ機能をインポート
+import chalk from "chalk"; // コンソールの色付け用ライブラリをインポート
+
+try {
+    // MongoDBに接続
+    await mongoose.connect(process.env.MONGO_URI, { dbName: "database" });
+    log.success(chalk.green("MongoDB connected")); // 接続成功メッセージをログに出力
+} catch(err){
+    log.error(err); // エラーログ出力
+    process.exit(1); // エラーが発生した場合、プロセスを終了
+}
 
 // Discordクライアントの初期化
 const client = new Client({
